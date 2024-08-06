@@ -1,14 +1,11 @@
 from inspect import getmembers, isfunction
-import sklearn
 import loggerGenerator
 import numpy as np
 import pandas as pd
 import torch
 # import seaborn as sns
 import matplotlib.pyplot as plt
-
-
-# from sklearn.model_selection import train_test_split
+from sklearn.model_selection import train_test_split
 
 
 def testing_torch_availability():
@@ -36,7 +33,7 @@ def kaggle_data_set():
     print(myData.head())
     # print(diabetes.isnull().sum())
 
-    myData['Outcome'] = np.where(myData['Outcome'] == 1, "Diabetic", "No Diabetic")
+    # myData['Outcome'] = np.where(myData['Outcome'] == 1, "Diabetic", "No Diabetic")
     # print(myData.head())
     # sns.pairplot(myData, hue="Outcome", )
     # plt.show()
@@ -46,11 +43,11 @@ def kaggle_data_set():
     y = myData['Outcome'].values  # dependent features
     # print(y)
     # X is numpy array here
-    # X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=0)
-    # print("X_train: ", X_train)
-    # print("y_train: ", X_train)
-    # print("X_test: ", X_train)
-    # print("y_test: ", X_train)
+    X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=0)
+    print("X_train: \n", "type: ", type(X_train), "  shape: ", X_test.shape, "    Dtype: ", X_train.dtype, "\n", X_train)
+    print("X_test: \n", "type: ", type(X_test), "  shape: ", X_test.shape, "    Dtype: ", X_test.dtype, "\n", X_test)
+    print("y_train: \n", "type: ", type(y_train), "  shape: ", y_train.shape, "    Dtype: ", y_train.dtype, "\n", y_train)
+    print("y_test: \n", "type: ", type(y_test), "  shape: ", y_test.shape, "    Dtype: ", y_test.dtype, "\n", y_test)
 
 
 def main() -> None:
